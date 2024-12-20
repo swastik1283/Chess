@@ -3,10 +3,13 @@ import { Color, PieceSymbol, Square } from "chess.js";
 import { MOVE } from "../screens/Game";
 import { useState } from "react";
 
-export const ChessBoard = ({
-  board,
+export const ChessBoard = ({chess,
   socket,
+  board,
+  setBoard,
 }: {
+  chess:any;
+  setBoard : any;
   board: ({
     square: Square;
     type: PieceSymbol;
@@ -41,6 +44,11 @@ export const ChessBoard = ({
                         })
                       );
                       setFrom(null);
+                      chess.move({
+                        from,
+                            to: squareRepresentation,
+                      });
+                      setBoard(chess.move)
                       console.log({
                         from,
                         to: squareRepresentation,
